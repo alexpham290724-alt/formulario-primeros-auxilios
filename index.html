@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Primeros Auxilios - Chacao</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8e1f4 0%, #e6d0f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(128, 0, 128, 0.2);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #8e24aa, #d81b60);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M1200 120L0 16.48 0 0 1200 0 1200 120z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+        }
+        
+        .form-container {
+            padding: 40px 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #6a1b9a;
+            padding-left: 5px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1bee7;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #ab47bc;
+            box-shadow: 0 0 0 3px rgba(171, 71, 188, 0.2);
+        }
+        
+        select.form-control {
+            cursor: pointer;
+            background-color: white;
+        }
+        
+        select.form-control option {
+            padding: 10px;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(to right, #8e24aa, #d81b60);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(142, 36, 170, 0.4);
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(142, 36, 170, 0.5);
+        }
+        
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        
+        .event-info {
+            background-color: #f3e5f5;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid #ab47bc;
+        }
+        
+        .event-info h3 {
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .event-info p {
+            margin-bottom: 8px;
+            color: #4a148c;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .icon {
+            color: #ab47bc;
+            font-size: 18px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #7b1fa2;
+            font-size: 14px;
+        }
+        
+        .heart {
+            color: #d81b60;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .confirmation i {
+            color: #4caf50;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Curso de Primeros Auxilios</h1>
+            <p>Concejo Municipal de Chacao - Comisión de Participación Ciudadana</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="event-info">
+                <h3><i class="fas fa-info-circle"></i> Información del Evento</h3>
+                <p><i class="fas fa-calendar-alt"></i> <strong>Fecha:</strong> 24 de Septiembre de 2025</p>
+                <p><i class="fas fa-clock"></i> <strong>Horario:</strong> 8:00 AM - 4:00 PM</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Lugar:</strong> Colegio Carlos Soublette (Antigua Sede), Municipio Chacao</p>
+            </div>
+            
+            <form action="https://formspree.io/f/xkgvedpr" method="POST" id="inscription-form">
+                <div class="form-group">
+                    <label for="nombre"><i class="fas fa-user"></i> Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej: María Rodríguez" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cedula"><i class="fas fa-id-card"></i> Cédula de Identidad</label>
+                    <input type="text" id="cedula" name="cedula" class="form-control" placeholder="Ej: V-12345678" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono"><i class="fas fa-phone"></i> Número de Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ej: 0412-1234567" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Ej: ejemplo@correo.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="residencia"><i class="fas fa-home"></i> Lugar de Residencia</label>
+                    <input type="text" id="residencia" name="residencia" class="form-control" placeholder="Ej: Urbanización, sector, municipio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="enteraste"><i class="fas fa-question-circle"></i> ¿Dónde te enteraste del Curso?</label>
+                    <select id="enteraste" name="enteraste" class="form-control" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Twitter">Twitter</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                        <option value="Amigo/Vecino">Amigo y/o Vecino</option>
+                        <option value="Página Web Municipal">Página Web Municipal</option>
+                        <option value="Cartelera/Volante">Cartelera/Volante</option>
+                        <option value="Radio">Radio</option>
+                        <option value="Televisión">Televisión</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar Inscripción</button>
+            </form>
+            
+            <div class="confirmation" id="confirmation-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>¡Inscripción Exitosa!</h3>
+                <p>Tu registro se ha completado correctamente. Te esperamos el 24 de septiembre.</p>
+            </div>
+            
+            <div class="footer">
+                <p>Organizado con <span class="heart">❤</span> por el Concejo Municipal de Chacao</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('inscription-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.querySelector('.btn-submit');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
+            
+            // Enviar el formulario a Formspree
+            fetch('https://formspree.io/f/xkgvedpr', {
+                method: 'POST',
+                body: new FormData(document.getElementById('inscription-form')),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('confirmation-message').style.display = 'block';
+                    document.getElementById('inscription-form').reset();
+                    document.getElementById('confirmation-message').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+                }
+            }).catch(error => {
+                alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+            }).finally(() => {
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Inscripción';
+                btn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
